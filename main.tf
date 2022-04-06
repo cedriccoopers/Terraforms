@@ -20,3 +20,22 @@ resource "aws_instance" "my-first-server" {
     "Name" = "ubuntu"
   }
 }
+
+#Create a VPC (Virtual Private Cloud)
+resource "aws_vpc" "my-first-vpc" {
+  cidr_block = "10.0.0.0/16"
+  tags = {
+    "Name" = "production"
+  }
+}
+
+#Create a Subnet
+#Reference the VPC resource above
+resource "aws_subnet" "subnet-1" {
+  vpc_id     = aws_vpc.my-first-vpc.id
+  cidr_block = "10.0.1.0/24"
+
+  tags = {
+    Name = "prod-subnet"
+  }
+}
