@@ -14,4 +14,9 @@ provider "aws" {
 resource "aws_instance" "my-first-server" {
   ami           = "ami-09879879879werce1"
   instance_type = "t2.micro"
+
+  #tags   - this will name the resource in AWS
+  tags = {
+    "Name" = "ubuntu"
+  }
 }
